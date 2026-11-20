@@ -1,0 +1,114 @@
+:root {
+    --fondo: #0f172a;
+    --panel: #1e293b;
+    --borde: #334155;
+    --texto: #f1f5f9;
+    --amarillo: #facc15;
+    --david: #3987e5;   /* mismos colores que las gráficas */
+    --marco: #d95926;
+    --verde: #16a34a;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+[hidden] { display: none !important; }
+
+body {
+    margin: 0;
+    padding: 12px 16px 96px;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: system-ui, "Segoe UI", Arial, sans-serif;
+    user-select: none;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+.logo { height: 40px; }
+h1 { margin: 0; color: var(--amarillo); font-style: italic; font-weight: 900; font-size: 1.6rem; }
+.estado { font-size: .85rem; padding: 4px 10px; border-radius: 99px; background: var(--panel); }
+.estado.ok { background: #14532d; }
+
+main { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 700px) { main { grid-template-columns: 1fr; } }
+
+.jugador { background: var(--panel); border-radius: 14px; padding: 10px; border-top: 4px solid; }
+.david { border-color: var(--david); }
+.marco { border-color: var(--marco); }
+.jugador h2 { margin: 0 0 8px; text-align: center; }
+.david h2 { color: var(--david); }
+.marco h2 { color: var(--marco); }
+.jugador h2 small { font-size: .7rem; color: #94a3b8; font-weight: 400; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 4px;
+    border: 2px solid var(--borde);
+    border-radius: 12px;
+    background: rgba(15, 23, 42, .6);
+    cursor: pointer;
+    transition: transform .1s;
+    touch-action: manipulation;
+}
+.card:active { transform: scale(.95); }
+.card img { width: 52px; height: 52px; object-fit: contain; pointer-events: none; }
+.card .nombre { font-size: .6rem; text-align: center; color: #cbd5e1; min-height: 1.6em; }
+.card .cuenta { font-size: 1.8rem; font-weight: 900; color: var(--amarillo); line-height: 1; }
+.card .tecla {
+    position: absolute; top: 3px; right: 5px;
+    font-size: .6rem; color: #64748b;
+}
+
+.card.suma { animation: suma .35s; }
+.card.resta { animation: resta .35s; }
+@keyframes suma { from { background: #16a34a; border-color: #fff; } }
+@keyframes resta { from { background: #dc2626; border-color: #fff; } }
+
+.total { text-align: center; margin-top: 8px; font-weight: 800; color: var(--amarillo); }
+
+.registro {
+    position: fixed; right: 16px; bottom: 80px;
+    display: flex; flex-direction: column; gap: 4px; align-items: flex-end;
+    pointer-events: none;
+}
+.registro div {
+    background: rgba(30, 41, 59, .95); padding: 6px 12px; border-radius: 8px;
+    font-size: .85rem; animation: fade 3s forwards;
+}
+@keyframes fade { 80% { opacity: 1; } to { opacity: 0; } }
+
+footer {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    display: flex; justify-content: center; gap: 16px;
+    padding: 10px; background: rgba(15, 23, 42, .9);
+}
+.btn {
+    border: 0; border-radius: 99px; padding: 12px 22px;
+    font-weight: 900; font-size: 1rem; color: #fff; cursor: pointer;
+}
+.btn:active { transform: scale(.95); }
+.verde { background: var(--verde); }
+.gris { background: #475569; }
+.azul { background: #256abf; text-decoration: none; display: inline-flex; align-items: center; }
+.rojo { background: #991b1b; }
+
+dialog {
+    background: var(--panel); color: var(--texto);
+    border: 1px solid var(--borde); border-radius: 14px; max-width: 340px; width: 100%;
+}
+dialog::backdrop { background: rgba(0, 0, 0, .6); }
+dialog h3 { margin-top: 0; }
+dialog label { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; }
+dialog input[type=number] { width: 70px; padding: 4px; border-radius: 6px; border: 1px solid var(--borde); background: var(--fondo); color: var(--texto); }
+.check { justify-content: flex-start !important; gap: 8px; }
+.ayuda { font-size: .8rem; color: #94a3b8; }

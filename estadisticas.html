@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTR Historial</title>
+    <link rel="icon" href="img/ctr.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estadisticas.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="img/ctr.png" alt="" class="logo">
+        <h1>ESTADÍSTICAS</h1>
+    </header>
+
+    <!-- Un solo filtro para toda la página -->
+    <div class="filtros">
+        <label for="periodo">Ver:</label>
+        <select id="periodo"></select>
+    </div>
+
+    <div id="vacio" class="vacio" hidden>
+        Todavía no hay datos en este periodo. Suma poderes en el contador y vuelve aquí.
+    </div>
+
+    <div id="contenido">
+        <!-- Resumen por jugador -->
+        <section class="tiles" id="tiles"></section>
+
+        <!-- Ranking de poderes por jugador -->
+        <section class="fila-2">
+            <article class="tarjeta">
+                <h3><span class="muestra david"></span>Poderes de David</h3>
+                <p class="sub">Ordenados de más a menos usado</p>
+                <div id="rank-David" class="barras-h"></div>
+                <p class="sin-usar" id="sinuso-David"></p>
+            </article>
+            <article class="tarjeta">
+                <h3><span class="muestra marco"></span>Poderes de Marco</h3>
+                <p class="sub">Ordenados de más a menos usado</p>
+                <div id="rank-Marco" class="barras-h"></div>
+                <p class="sin-usar" id="sinuso-Marco"></p>
+            </article>
+        </section>
+
+        <!-- Cara a cara -->
+        <article class="tarjeta">
+            <h3>Cara a cara por poder</h3>
+            <p class="sub">David a la izquierda, Marco a la derecha, en la misma escala</p>
+            <div class="leyenda"><span><i class="muestra david"></i>David</span><span><i class="muestra marco"></i>Marco</span></div>
+            <div id="cara" class="cara"></div>
+        </article>
+
+        <!-- Por tipo -->
+        <article class="tarjeta">
+            <h3>Estilo de juego por tipo de poder</h3>
+            <p class="sub">Misiles, bombas, burbujas, trampas, especiales y otros</p>
+            <div class="leyenda"><span><i class="muestra david"></i>David</span><span><i class="muestra marco"></i>Marco</span></div>
+            <div id="tipos" class="barras-h"></div>
+        </article>
+
+        <!-- Historial de partidas -->
+        <article class="tarjeta" id="tarjeta-historial">
+            <h3>Historial de partidas</h3>
+            <p class="sub">Total de poderes por partida (últimas 20)</p>
+            <div class="leyenda"><span><i class="muestra david"></i>David</span><span><i class="muestra marco"></i>Marco</span></div>
+            <div id="historial" class="columnas"></div>
+
+            <details class="tabla-vista" open>
+                <summary>Tabla de partidas</summary>
+                <div class="tabla-scroll"><table id="tabla-partidas"></table></div>
+            </details>
+        </article>
+
+        <!-- Tabla completa (equivalente accesible de las gráficas) -->
+        <article class="tarjeta">
+            <details class="tabla-vista">
+                <summary>Ver todos los números en tabla</summary>
+                <div class="tabla-scroll"><table id="tabla-poderes"></table></div>
+            </details>
+        </article>
+    </div>
+
+    <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+
+    <footer>
+        <a href="index.html" class="btn gris">⬅ CONTADOR</a>
+        <button id="btn-excel-hist" class="btn verde">💾 EXCEL HISTORIAL</button>
+    </footer>
+
+    <script src="datos.js"></script>
+    <script src="estadisticas.js"></script>
+</body>
+</html>

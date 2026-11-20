@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTR Estadísticas</title>
+    <link rel="icon" href="img/ctr.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="img/ctr.png" alt="" class="logo">
+        <h1>CTR ESTADÍSTICAS</h1>
+        <div id="estado-mando" class="estado">🎮 Sin mando (pulsa un botón)</div>
+    </header>
+
+    <main>
+        <section class="jugador david">
+            <h2>DAVID <small>botón <span class="lbl-boton" data-jugador="David"></span></small></h2>
+            <div id="grid-David" class="grid"></div>
+            <div class="total">TOTAL: <span id="total-David">0</span></div>
+        </section>
+
+        <section class="jugador marco">
+            <h2>MARCO <small>botón <span class="lbl-boton" data-jugador="Marco"></span></small></h2>
+            <div id="grid-Marco" class="grid"></div>
+            <div class="total">TOTAL: <span id="total-Marco">0</span></div>
+        </section>
+    </main>
+
+    <aside id="registro" class="registro"></aside>
+
+    <footer>
+        <button id="btn-excel" class="btn verde">💾 EXCEL</button>
+        <a href="estadisticas.html" class="btn azul" title="Estadísticas e historial">📊</a>
+        <button id="btn-config" class="btn gris">⚙️</button>
+        <button id="btn-reset" class="btn rojo" title="Terminar partida (se guarda en el historial)">🔄</button>
+    </footer>
+
+    <dialog id="dlg-config">
+        <form method="dialog">
+            <h3>Configuración del mando</h3>
+            <p class="ayuda">Botones pulsados ahora: <b id="botones-vivo">—</b><br>
+               (los números del navegador pueden ser distintos a los de pygame)</p>
+            <label>Botón David <input type="number" id="cfg-David" min="0" max="31"></label>
+            <label>Botón Marco <input type="number" id="cfg-Marco" min="0" max="31"></label>
+            <label>Botón Borrar <input type="number" id="cfg-borrar" min="0" max="31"></label>
+            <label class="check"><input type="checkbox" id="cfg-voz"> Voz activada</label>
+            <button class="btn verde" id="cfg-guardar">Guardar</button>
+        </form>
+    </dialog>
+
+    <script src="datos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
